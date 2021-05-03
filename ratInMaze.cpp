@@ -2,6 +2,10 @@
 #define ll long long int
 using namespace std;
 
+//  ------------------------------
+//        BACKTRACKING
+//  ------------------------------
+
 bool isSafe(int **arr, int x, int y, int n)
 {
     if (x < n && y < n && arr[x][y] == 1)
