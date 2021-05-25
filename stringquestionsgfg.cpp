@@ -3,7 +3,7 @@
 using namespace std;
 
 //  ----------------------------------------------------------------
-//  FUNCTION FOR CHECKING ANAGRAM
+//!  FUNCTION FOR CHECKING ANAGRAM
 //  ----------------------------------------------------------------
 bool anagram(string a, string b)
 {
@@ -29,7 +29,7 @@ bool anagram(string a, string b)
 }
 
 //----------------------------------------------------------------
-// FUNCTION FOR CHECKING LEFTMOST REPEATING CHARACTER
+//? FUNCTION FOR CHECKING LEFTMOST REPEATING CHARACTER
 //----------------------------------------------------------------
 int firstRepeat(string s)
 {
@@ -53,7 +53,7 @@ int firstRepeat(string s)
     return (ans == INT_MAX) ? -1 : ans;
 }
 //----------------------------------------------------------------
-// FUNCTION FOR CHECKING LEFTMOST NON - REPEATING CHARACTER
+//* FUNCTION FOR CHECKING LEFTMOST NON - REPEATING CHARACTER
 //----------------------------------------------------------------
 
 int firstNonRepeat(string s)
@@ -76,8 +76,18 @@ int firstNonRepeat(string s)
     return (ans == INT_MAX) ? -1 : ans;
 }
 
-
-
+//*--------------------------------------------------------------
+//  !Naive Algorithm checking for every char and resting again from previoulsy checked element
+//  TODO:  time complexitiy is ((m-n+1) * n)
+//*-------------------------------------------------------------
+//  !Optimized Naive Algorithm checking for every distinct char and reseting at the end of 
+//  ?checked string time complexity is O(n).
+//*-------------------------------------------------------------
+//  !Rabin Karp Algorithm checking hash of string and if hash match then checking elements
+//  ?*worst case time complexity is same as naive && average case is O(n).
+//*-------------------------------------------------------------
+//  !KMP Algorithm is good
+// 
 int main()
 {
 #ifndef ONLINE_JUDGE

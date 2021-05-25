@@ -2,9 +2,9 @@
 #define ll long long int
 using namespace std;
 
-//----------------------------------------------------------------
-//                    BINARY SEARCH CODE
-//----------------------------------------------------------------
+// ----------------------------------------------------------------
+//*                    BINARY SEARCH CODE
+//  ----------------------------------------------------------------
 
 int binarySearch(int arr[], int n, int a)
 {
@@ -27,7 +27,7 @@ int binarySearch(int arr[], int n, int a)
 }
 
 //***********************************************************
-//            RECCUSRIVE BINARY SEARCH
+// !           RECCUSRIVE BINARY SEARCH
 //***********************************************************
 
 int recursiveBSearch(int arr[], int low, int high, int a)
@@ -53,7 +53,7 @@ int main()
     while (t--)
     {
         int arr[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        cout << arr[recursiveBSearch(arr,0,9,5)];
+        cout << arr[recursiveBSearch(arr,0,9,8)];
     }
     cerr << "time taken : " << (float)clock() / CLOCKS_PER_SEC << " secs" << endl;
     return 0;

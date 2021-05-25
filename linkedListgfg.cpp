@@ -2,9 +2,10 @@
 #define ll long long int
 using namespace std;
 
-//----------------------------------------------------------------
-//     Linked list using class
-//----------------------------------------------------------------
+//?----------------------------------------------------------------
+//todo     Linked list using class
+//?----------------------------------------------------------------
+
 class node
 {
 public:
@@ -16,7 +17,9 @@ public:
         next = NULL;
     }
 };
-// -------------Print function------------------//
+
+//todo   -------------Print function------------------//
+
 void printList(node *head)
 {
     node *curr = head;
@@ -26,7 +29,9 @@ void printList(node *head)
         curr = curr->next;
     }
 }
-//  -------------Print function Reccursive------------------//
+
+//todo-------------Print function Reccursive------------------//
+
 void printListRec(node *head)
 {
     if (head == NULL)
@@ -34,7 +39,9 @@ void printListRec(node *head)
     cout << head->data << " ";
     return printListRec(head->next);
 }
-//  -------------Searching------------------------//
+
+//todo------------------Searching------------------------//
+
 int search(node *head, int x)
 {
 
@@ -54,7 +61,9 @@ int search(node *head, int x)
     }
     return -1;
 }
-//  -------------Searching Recursively------------------//
+
+//todo----------------Searching Recursively------------------//
+
 int recursiveSearch(node *head, int x)
 {
     int position = 0;
@@ -65,14 +74,17 @@ int recursiveSearch(node *head, int x)
     position++;
     return recursiveSearch(head->next, x);
 }
-//  -------------Insert at Head------------------------//
+//todo----------------Insert at Head------------------------//
+
 node *insertAtStart(node *head, int x)
 {
     node *temp = new node(x);
     temp->next = head;
     return temp;
 }
-//  -------------Insert at End------------------------//
+
+//todo-----------------Insert at End------------------------//
+
 node *insertAtEnd(node *head, int x)
 {
     node *temp = new node(x);
@@ -88,7 +100,9 @@ node *insertAtEnd(node *head, int x)
     curr->next = temp;
     return head;
 }
-//  -------------Delete at Head------------------//
+
+//todo---------------Delete at Head------------------//
+
 node *deleteHead(node *head)
 {
     if (head == NULL)
@@ -99,7 +113,9 @@ node *deleteHead(node *head)
     delete head;
     return curr;
 }
-//  -------------Delete at Tail------------------//
+
+//todo---------------Delete at Tail---------------------//
+
 node *deleteTail(node *head)
 {
     if (head == NULL)
@@ -119,7 +135,9 @@ node *deleteTail(node *head)
     curr->next = NULL;
     return head;
 }
-//  -------------Insert at Specific position----------------//
+
+//todo--------------Insert at Specific position----------------//
+
 node *InsertAtPos(node *head, int position, int x)
 {
     node *temp = new node(x);
@@ -141,7 +159,9 @@ node *InsertAtPos(node *head, int position, int x)
     curr->next = temp;
     return head;
 }
-//  -------------Insert Elements in a Sorted Way-----------------//
+
+//todo----------------Insert Elements in a Sorted Way-------------------//
+
 node *insertSorted(node *head, int x)
 {
     node *temp = new node(x);
@@ -163,67 +183,132 @@ node *insertSorted(node *head, int x)
     curr->next = temp;
     return head;
 }
-//  -------------Middle of LinkedList------------------//
+
+//todo----------------Middle of LinkedList------------------//
+
 void middleOfList(node *head)
 {
     int position = 1;
     if (head == NULL)
         return;
     node *slow = head, *fast = head;
-    while (fast!= NULL && fast->next!= NULL)
+    while (fast != NULL && fast->next != NULL)
     {
         slow = slow->next;
         fast = fast->next->next;
     }
-    cout << (slow->data) <<endl; 
+    cout << (slow->data) << endl;
 }
-//  -------------Printing nth Node from last----------------//
-void printNode(node * head, int x){
 
-    //  ---------Naive Approach------------- //
+//todo--------------Printing nth Node from last----------------//
 
-    // int length = 0;
-    // node *curr = head;
-    // while (curr->next != NULL){
-    //     length++;
-    //     curr = curr->next;
-    // }
-    // if(length<x) return;
-    // curr = head;
-    // for(int i = 0; i<(length-x+1); i++){
-    //     curr = curr->next;
-    // }
-    // cout << curr->data <<endl;
+void printKNode(node *head, int x)
+{
 
-    //  --------------Two pointer Approach-------------- //
+    //!  ---------Naive Approach------------- //
 
-    if(head == NULL) return;
+    //* int length = 0;
+    //* node *curr = head;
+    //* while (curr->next != NULL){
+    //*     length++;
+    //*     curr = curr->next;
+    //* }
+    //* if(length<x) return;
+    //* curr = head;
+    //* for(int i = 0; i<(length-x+1); i++){
+    //*     curr = curr->next;
+    //* }
+    //* cout << curr->data <<endl;
 
-    node* first = head;
-    for(int i = 0; i < n; i++){
-        if(first == NULL) return;
+    //? --------------Two pointer Approach-------------- //
+
+    if (head == NULL)
+        return;
+
+    node *first = head;
+    for (int i = 0; i < x; i++)
+    {
+        if (first == NULL)
+            return;
         first = first->next;
     }
-    node* second = head;
-    while(first!= NULL){
+    node *second = head;
+    while (first != NULL)
+    {
         second = second->next;
         first = first->next;
     }
-    cout <<(second->data)<<endl; 
+    cout << (second->data) << endl;
 }
 
-//  -------------Reverse the List--------------  //
+//TODO -------------Reverse the List--------------  //
 
-node *reverse(node *head){
-    node *prev = head;
+node *reverse(node *head)
+{
+    node *prev = NULL;
     node *curr = head;
-    while(curr != NULL){
+    while (curr != NULL)
+    {
         node *next = curr->next;
         curr->next = prev;
         prev = curr;
         curr = next;
     }
     return prev; // NEW Head
+}
+
+//TODO-------------------------Reverse a list recursively------------------------------------//
+
+//*------------------------METHOD 1-------------------------//
+
+node *reverseRecursive(node *head)
+{
+
+    if (head == NULL || head->next == NULL)
+    {
+        return head;
+    }
+
+    node *restHead = reverseRecursive(head->next);
+    node *restTail = head->next;
+    restTail->next = head;
+    head->next = NULL;
+    return restHead;
+}
+
+//?---------------------METHOD 2---------------------------//
+
+node *reverseRecursive(node *curr, node *prev)
+{
+
+    if (curr == NULL)
+    {
+        return prev;
+    }
+
+    node *next = curr->next;
+    curr->next = prev;
+    return reverseRecursive(next, curr);
+}
+
+//todo-------------Remove duplicate from sorted list-----------------------//
+
+void removeDuplicate(node *head)
+{
+    node *curr = head;
+    while (curr->next != NULL || curr != NULL)
+    {
+        if (curr->next->data == curr->data)
+        {
+            node *temp = curr->next;
+            curr->next = curr->next->next;
+            delete (temp);
+        }
+        else
+        {
+            curr = curr->next;
+        }
+    }
 }
 
 int main()
@@ -235,8 +320,8 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    ll t;
-    cin >> t;
+    ll t = 1;
+    //cin >> t;
     while (t--)
     { // Creating a Link List
         // node *head = new node(50);
@@ -264,15 +349,16 @@ int main()
         head = InsertAtPos(head, 2, 70);
         printListRec(head);
         head = insertSorted(head, 10);
-        head = insertSorted(head, 25);
-        head = insertSorted(head, 67);
-        head = insertSorted(head, 39);
+        head = insertSorted(head, 20);
+        head = insertSorted(head, 10);
+        head = insertSorted(head, 20);
         cout << endl;
-        printListRec(head);
-        cout << endl;
-        printNode(head,3);
-        middleOfList(head);
+        printList(head);
+        removeDuplicate(head);
+        printList(head);
     }
+
     cerr << "time taken : " << (float)clock() / CLOCKS_PER_SEC << " secs" << endl;
+
     return 0;
 }
